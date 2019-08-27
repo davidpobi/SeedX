@@ -1,0 +1,70 @@
+<div class="navbar-fixed" style="opacity: 1.0">
+  <nav class="grey">
+    <div class="nav-wrapper center">
+      <a style="color: white; font-size:21px;"> SeedX</a>
+    </div>
+    
+    <!-- <a [routerLink]="['/seedx/notifications']" style="text-decoration: none; position: absolute; top:4px; right:18px;"><i class="material-icons">notifications_none</i></a> -->
+  </nav>
+  </div>
+  <div class="photoBox">
+    <img src="assets/images/bloom-gate.jpg" alt="" style="width: 100vw; height: 45vh;  object-fit:cover;">
+      <!-- <img *ngIf="photoUrl !== null" src="assets/images/DSC_7761.JPG" alt="" style="width: 100vw; height: 55vh;;">
+      <img *ngIf="photoUrl === null && user.gender === 0" src="assets/man.jpg" alt="" style="width: 100vw; height: 55vh;">
+      <img *ngIf="photoUrl === null && user.gender === 1" src="assets/woman.jpg" alt="" style="width: 100vw; height: 55vh;"> -->
+</div>  
+
+
+
+<section class="container">
+<!-- <h1 *ngIf="offlineState === true" class="header center"  style="font-size: 14px; color:rgb(253, 42, 42);">You Are Offline. Please Reconnect</h1> -->
+<div class="header center">
+<h1 style="font-size: 21px; color:gold;"> Signin</h1>
+</div>
+
+<div class="row"> 
+  <input type="email" [(ngModel)]="emailString" placeholder="Email" style="background-color: white; border-radius: 25px; height: 30px;">
+</div>
+
+<div class="row"> 
+  <input type="password" [(ngModel)]="passwordString" placeholder="Password" style="background-color: white; border-radius: 25px; height: 30px;" >
+</div> 
+
+<br>
+<div class="center">
+  <button (click)="signInWithEmail($event)" class="btn btn-flat btn-small" style="background-color: gold; color:white;  border: 2px solid;
+  border-radius: 20px;">Signin</button>
+</div><br>
+
+</section>
+<!-- <div class="row  loginBox" >
+            <div class="col-1"></div>
+            <div class="col-10">
+                    <br><br> <br><br> <br><br>
+                    <div class="card">   
+                      <div class="header center">
+                          <h1 style="font-size:27px; color:gold;">seedx<span style="color:pink;">Alpha</span></h1>
+                      </div>
+                               
+                      <div  class="card-content">
+                        <div class="form-group col-8"> 
+                            <label style="color:grey;">Email</label>
+                            <input type="email" [(ngModel)]="emailString" placeholder="email">
+                        </div>
+                        <div class="form-group col-4"> 
+                            <label style="color:grey;">Password</label>
+                            <input type="text" maxlength="4" (keyup)="checkPin($event)" [(ngModel)]="passwordString" placeholder="password">
+                        </div>
+
+                        <div class="header center">
+                            <button (click)="signInWithEmail($event)" class="btn  btn-large btn-flat waves-effect waves-light btn-large green " [disabled]="!emailString || !passwordString" style="color: white;">
+                              Enter
+                            </button>
+                        </div>
+                        </div>
+                             
+                        </div>
+
+            </div>
+            <div class="col-1"></div>
+            </div> -->

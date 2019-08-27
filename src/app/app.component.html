@@ -1,0 +1,11 @@
+
+
+<div class="header center" *ngIf="loading" style="position: relative; top:30vh;">
+  <br>
+<img src="assets/images/Bloombarloader.gif" width="150px">
+</div>
+ 
+
+<div *ngIf="!loading">
+  <router-outlet ></router-outlet>
+</div>

@@ -1,0 +1,87 @@
+<main style="height: 100vh;">
+<div class="navbar-fixed" style="opacity:1.0">
+  <nav class="black">
+    <div class="nav-wrapper center">
+      <a ><img src="assets/images/seedxbar-logo.png" class="seedx-logo"  width="75px"/></a>
+    </div>
+  </nav>
+</div>
+
+<section class="container">
+<div class="header center">
+<h1 style="font-size: 21px; color:gold;" [hidden]="setupLevel !== 1">Signup</h1>
+<h1 style="font-size: 21px; color:gold;" [hidden]="setupLevel !== 2">Upload Photo</h1>
+</div>
+
+<div class="photoBox" [hidden]="setupLevel !== 2">
+  <br><br>
+    <img (click)="uploadFile($event)" src="assets/images/profile.png" class="rounded-circle" width="100%" height="300px">
+    <input type="file" (change)="runFileSelect($event)" id="imageInput" style="display: none;" />
+   <br> 
+   <div><span *ngIf="uploadPercent" style="font-size:19px; color:gold;">{{ uploadPercent_}} %</span></div> 
+</div>
+
+<div class="formBox" [hidden]="setupLevel !== 1">  
+<div>
+    <img [disabled]="setupLevel === 1" src="assets/images/profile.png" class="rounded-circle" width="100px" height="100px">
+</div> 
+<br><br>
+<div class="row"> 
+  <input type="text" [(ngModel)]="firstnameInput" placeholder="Firstname" style="background-color: white; border-radius: 25px; height: 30px;">
+</div>
+
+<div class="row"> 
+  <input type="text" [(ngModel)]="lastnameInput" placeholder="Lastname" style="background-color: white; border-radius: 25px; height: 30px;" >
+</div>
+
+
+<div class="row"> 
+  <input type="email" [(ngModel)]="emailInput" placeholder="Email" style="background-color: white; border-radius: 25px; height: 30px;">
+</div>
+
+<div class="row"> 
+  <input type="tel" [(ngModel)]="contactInput" placeholder="Phone Number" style="background-color: white; border-radius: 25px; height: 30px;">
+</div>
+
+<div class="row">
+  <div class="col-7"> 
+    <label style="font-size:14px; color:white;">Date Of Birth</label>
+    <input type="date" (change)="checkAge($event)" [(ngModel)]="birthdayInput" style="background-color: white; position: relative; left:-15px; border-radius: 25px; height: 30px;" placeholder="22/2/18">
+  </div>
+
+  <div class="col-5"> 
+    <div [hidden]="ageInput === null" >
+      <p [hidden]="ageInput === null" style="color:grey; font-size:24px;">{{ageInput}}yrs<br>
+      <span [hidden]="ageInput >= 18 || ageInput === null" style="color:rgb(245, 122, 122); font-size:10px;">sorry you are underaged</span>
+      <!-- <span [hidden]="ageInput <= 99 || ageInput === null" style="color:rgb(245, 122, 122); font-size:10px;">you dont say </span> 
+      <span [hidden]="ageInput < 18 || ageInput > 99 || ageInput === null" style="color:green(245, 122, 122); font-size:10px;">Sweet</span>  -->
+      </p>
+  </div>
+  </div>
+</div> 
+
+<div class="row">
+    <ul class="list-inline">
+        <li class="list-inline-item" *ngFor="let form of genderSet; let i= index;">
+        <button (click)="selectGender($event,form.key)"   [class.genderSelect]="genderInput === form.key" [class.genderUnselect]="genderInput !== form.key" class="btn-flat btn-small " style="color:white; font-size:12px; border: 2px solid;
+        border-radius: 40px;">{{form.name}}</button>
+        </li>
+    </ul>
+</div>
+
+<div class="row"> 
+  <input type="password" [(ngModel)]="passwordString" placeholder="Password" style="background-color: white; border-radius: 25px; height: 30px;" >
+</div>
+
+<br>
+<div class="center">
+  <button (click)="createClient($event)" [disabled]="emailInput === null || passwordString === null || agePass !== true" class="btn btn-flat btn-small" style="background-color: gold; color:black;  border: 2px solid;
+  border-radius: 40px;">Signup</button>
+</div>
+
+<br>
+<p style="color:white; font-size:14px;">Already have an account ?</p>
+<a [routerLink]="['/enter']" style="color:gold; font-size:14px;">Login</a><br><br>
+</div>
+</section>
+</main>

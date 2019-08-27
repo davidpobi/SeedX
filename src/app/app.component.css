@@ -1,0 +1,17 @@
+.topNav {
+    top: 0px;
+    position: fixed;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    background-color: transparent;
+    width:0px; 
+  }
+
+
+  .actionList {
+    bottom: 125px;
+    right: 7px;
+    position: fixed;
+  }
