@@ -17,9 +17,11 @@ export interface ISEO {
 export interface IUser {
     id ?: string;
     email: string;
-    firstName ?: string;
-    lastName ?: string;
+    firstname ?: string;
+    lastname ?: string;
     username ?: string;
+    contact?: string;
+    birthday?:string;
     gender?: Gender;
     photoUrl ?: string;
    // roles ?: Roles;
@@ -51,76 +53,8 @@ export class User {
 
 
 
-export interface IClient {
-    id ?: string;
-    firstname: string;
-    lastname: string;
-    email ?: string;
-    contact ?: string;
-    age?: number;
-    birthday?: string;
-    gender: Gender;
-    photoUrl?: string;
-    twitter?: string;
-    instagram?: string;
-    snapchat?: string;
-    visits?: number;
-    bounces?: number;
-
-}
-
 
 export enum Gender {
     Man,
-    Woman,
-    Other
-}
-
-
-
-
-export interface INight {
-    id?: string;
-    date?: string;
-    title?: string;
-    guestCount?: number;
-    bounceCount?: number;
-    menCount?: number;
-    womenCount?: number;
-}
-
-
-
-export interface IDrink {
-    id?: string;
-    name: string;
-    description: string;
-    price?: number;
-    ratings?: IDrinkData;
-    createdBy?: string;
-    createdAt?: string;
-    updatedAt?: string;
-}
-
-
-
-export interface IDrinkData {
-    star1?: number;
-    star2?: number;
-    star3?: number;
-    star4?: number;
-    star5?: number;
-    ratersCount?: number;
-}
-
-
-export interface IEvent {
-    id?: string;
-    name: string;
-    description?:string;
-    startAt?: string; // opening at
-    endAt?: string; //closing at
-    createdBy?: string;
-    createdAt?: string;
-    updatedAt?: string;
+    Woman
 }

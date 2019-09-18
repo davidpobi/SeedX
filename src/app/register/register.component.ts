@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import {AuthService } from '../services/auth.service';
-import { IClient, Gender} from '../models/interfaces';
+import { Gender, IUser} from '../models/interfaces';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
     this.birthdayInput = null;
     this.passwordString = null;
     this.passwordString_ = null;
-    this.genderSet = [{name:'Man', key: Gender.Man},{name:'Woman', key: Gender.Woman},{name:'Rather Not Say', key: Gender.Other}];
+    this.genderSet = [{name:'Man', key: Gender.Man},{name:'Woman', key: Gender.Woman}];
     this.subscriptions = [];
 
     try {
@@ -111,7 +111,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
    async createClient($event) {
      $event.preventDefault();
      let agePass_ = null;
-     const obj: IClient = {
+     const obj: IUser = {
       firstname: this.firstnameInput,
       lastname: this.lastnameInput,
       email: this.emailInput,
@@ -121,30 +121,22 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
       photoUrl: null
      }
 
-     console.log(obj);
-     agePass_ = this.checkAge($event);
-     console.log('password is ' + this.passwordString);
-     if(agePass_ === true ) {
-       console.log('can sign up');
-        await this.auth.createUserWithEmail(this.emailInput, this.passwordString).then(async(x) => {
-         console.log(x.user.uid);
-         this.userId = x.user.uid;
-        await this.auth.saveUserDetails(x.user.uid, obj).then((x) => {
-          console.log('added');
-          this.setupLevel = 2;
-         }).catch((err) => {
-           console.log(err);
-         })     
-       }).catch((err) => {
-         console.log(err);
-         if(err.code === "auth/email-already-in-use") {
-           console.log(err.message);
-           this.emailExists = true;
-         }
-       });
-     } else {
-      console.log('underage cant sign up');
-     }
+     await this.auth.createUserWithEmail(this.emailInput, this.passwordString).then(async(x) => {
+      console.log(x.user.uid);
+      this.userId = x.user.uid;
+     await this.auth.saveUserDetails(x.user.uid, obj).then((x) => {
+       console.log('added');
+       this.setupLevel = 2;
+      }).catch((err) => {
+        console.log(err);
+      })     
+    }).catch((err) => {
+      console.log(err);
+      if(err.code === "auth/email-already-in-use") {
+        console.log(err.message);
+        this.emailExists = true;
+      }
+    });
    }
 
 

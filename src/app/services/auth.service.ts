@@ -6,7 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
-import {IClient, IUser, User} from '../models/interfaces';
+import {IUser, User} from '../models/interfaces';
 import { switchMap, catchError} from 'rxjs/operators';
 import 'rxjs/add/observable/of';
 
@@ -30,8 +30,8 @@ knownUser
 export class AuthService {
   userSetupState: UserSetupState;
   actionCodeSettings;
-  usersCollection: AngularFirestoreCollection<IClient>;
-  userRef:  AngularFireObject<IClient>;
+  usersCollection: AngularFirestoreCollection<IUser>;
+  userRef:  AngularFireObject<IUser>;
   user: Observable<firebase.User>;
   userId;
   private userContact;
@@ -87,7 +87,7 @@ export class AuthService {
 
 
 
-  async saveUserDetails(userId, obj: IClient) {
+  async saveUserDetails(userId, obj: IUser) {
     console.log(obj);
     const user:any = {
       firstname: obj.firstname,

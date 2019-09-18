@@ -7,12 +7,6 @@
     <!-- <a [routerLink]="['/seedx/notifications']" style="text-decoration: none; position: absolute; top:4px; right:18px;"><i class="material-icons">notifications_none</i></a> -->
   </nav>
   </div>
-  <div class="photoBox">
-    <img src="assets/images/bloom-gate.jpg" alt="" style="width: 100vw; height: 45vh;  object-fit:cover;">
-      <!-- <img *ngIf="photoUrl !== null" src="assets/images/DSC_7761.JPG" alt="" style="width: 100vw; height: 55vh;;">
-      <img *ngIf="photoUrl === null && user.gender === 0" src="assets/man.jpg" alt="" style="width: 100vw; height: 55vh;">
-      <img *ngIf="photoUrl === null && user.gender === 1" src="assets/woman.jpg" alt="" style="width: 100vw; height: 55vh;"> -->
-</div>  
 
 
 
@@ -23,19 +17,20 @@
 </div>
 
 <div class="row"> 
-  <input type="email" [(ngModel)]="emailString" placeholder="Email" style="background-color: white; border-radius: 25px; height: 30px;">
+  <input type="email" [(ngModel)]="emailString" placeholder="Email" style="background-color: white;height: 30px;">
 </div>
 
 <div class="row"> 
-  <input type="password" [(ngModel)]="passwordString" placeholder="Password" style="background-color: white; border-radius: 25px; height: 30px;" >
+  <input type="password" [(ngModel)]="passwordString" placeholder="Password" style="background-color: white; height: 30px;" >
 </div> 
 
 <br>
 <div class="center">
-  <button (click)="signInWithEmail($event)" class="btn btn-flat btn-small" style="background-color: gold; color:white;  border: 2px solid;
-  border-radius: 20px;">Signin</button>
+  <button (click)="signInWithEmail($event)" class="btn btn-flat btn-small" style="background-color: gold; color:white;">Signin</button>
 </div><br>
-
+<br>
+<p style="color:grey; font-size:14px;">Don't have an account ?</p>
+<a [routerLink]="['/signup']" style="color:grey; font-size:14px;">Signup</a><br><br>
 </section>
 <!-- <div class="row  loginBox" >
             <div class="col-1"></div>

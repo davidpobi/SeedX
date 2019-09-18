@@ -23,10 +23,8 @@ import { SeoService } from './services/seo.service';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { RoleGuardService as RoleGuard } from './services/role-guard.service';
 import { AboutComponent } from './about/about.component';
-import { DrinksService} from './services/drinks.service';
-import { EventsService} from './services/events.service';
-import { ProfileService} from './services/profile.service';
-import { DashboardService} from './services/dashboard.service';
+import { registerContentQuery } from '@angular/core/src/render3';
+
 
 
 export class MyErrorHandler implements ErrorHandler {
@@ -45,12 +43,10 @@ const appRoutes: Routes = [
    {
     path: 'login',
     component: LoginComponent,
-  //  data: { animation: 'isRight' }
    },
    {
     path: 'signup',
-    component: LoginComponent,
-  //  data: { animation: 'isRight' }
+    component: RegisterComponent,
    }
 ];
 
@@ -91,7 +87,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     {provide: ErrorHandler, useClass: MyErrorHandler},
-    SeoService, DashboardService, AuthService, ProfileService, DrinksService, EventsService, AuthGuard, RoleGuard, AngularFireDatabase],
+    SeoService, AuthService,  AuthGuard, RoleGuard, AngularFireDatabase],
   bootstrap: [AppComponent],
   schemas:  [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
